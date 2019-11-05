@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<button @click="handleClick">发送消息</button>
-		<!-- <button @click="handleService">自定义客服按钮</button> -->
+		<button @click="handleService">自定义客服按钮</button>
 		<div class="service-box">
 			<p>这里的消息可以通过融云控制台发送</p>
 			<p>{{ curMessage }}</p>
@@ -29,19 +29,17 @@ export default {
 		}
 	},
 	mounted() {
-		RongIM.init(this.receiveMessage)
+		// RongIM.init(this.receiveMessage)
 		console.log(RongIMLib)
-		this.init()
+		// this.init()
 	},
 	methods: {
 		handleClick() {
 			RongIM.sendMessage()
 		},
 		handleService() {
-			// 先要获取token
-			// this.init()
-			// console.log(13132)
-			// RCS.showCommon()
+			// 先要获取token 如果不用它的button的话 那么就需要自己连接客服 startCustomerServer客服初始化接口 createConversation 创建客服
+			this.init()
 		},
 		receiveMessage(message) {
 			this.curMessage = message
